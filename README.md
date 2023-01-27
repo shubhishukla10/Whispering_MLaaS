@@ -7,6 +7,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 *Memory*: Minimum 16GB
 
+Install the necessary python packages using the provided *requirements.txt* file.
 
 
 ## Usage/Examples
