@@ -96,7 +96,7 @@ python3 Run_MLP_Attack.py
 First, create a separate virtual environment for the countermeasure.
 To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
 
-Once the PyTorch has been installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp*:
+Once the PyTorch has been successfully installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp* and build PyTorch again:
 
 Replace the following code snippet:
 ```
