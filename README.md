@@ -1,4 +1,4 @@
-# Whispering MLaaS
+# "Whispering MLaaS" Exploiting Timing Channels to Compromise User Privacy in Deep Neural Networks
 Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Compromise User Privacy in Deep Neural Networks
 
 **System Requirements:**
