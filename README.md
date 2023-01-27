@@ -105,12 +105,12 @@ maxindex = index;
 ```
 with,
 ```
-tmp_arr [ 0 ] = v a l ;
-tmp_arr [ 1 ] = maxval ;
-maxval = tmp_arr [ ( v a l < maxval ) ∗ 1 ] ;
-tmp_arr [ 0 ] = i n d e x ;
-tmp_arr [ 1 ] = maxindex ;
-maxindex = tmp_arr [ ( v a l < maxval ) ∗ 1 ] ;
+tmp_arr[0] = val ;
+tmp_arr[1] = maxval ;
+maxval = tmp_arr[( val < maxval ) ∗ 1] ;
+tmp_arr[0] = index ;
+tmp_arr[1] = maxindex ;
+maxindex = tmp_arr [( val < maxval ) ∗ 1] ;
 ```
  
 The countermeasure can be evaluated by running experiments from the following sections:
