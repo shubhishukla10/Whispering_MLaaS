@@ -49,3 +49,27 @@ With differential privacy,
 taskset -c python3 Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
 python3 Distinguish_Labels_layerwise.py -d yes
 ```
+### Countermeasure
+First, create a separate virtual environment for the countermeasure.
+To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
+
+Once the PyTorch has been installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp*:
+
+Replace the following code snippet:
+```
+if ((val > maxval) || std::isnan(val)) {
+maxval = val;
+maxindex = index;
+}
+```
+with,
+```
+tmp_arr [ 0 ] = v a l ;
+tmp_arr [ 1 ] = maxval ;
+maxval = tmp_arr [ ( v a l < maxval ) ∗ 1 ] ;
+tmp_arr [ 0 ] = i n d e x ;
+tmp_arr [ 1 ] = maxindex ;
+maxindex = tmp_arr [ ( v a l < maxval ) ∗ 1 ] ;
+```
+ 
+The countermeasure can be evaluated by running the following: [Distinguish Class Label Pairs](#distinguish-class-label-pairs)
