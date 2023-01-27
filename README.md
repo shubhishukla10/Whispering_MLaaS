@@ -12,7 +12,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
   pip install -r requirements.txt
   ```
 
-Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact* 
+Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact*. The Models directory contains pre-trained CNN models. The Data directory consists of CIFAR-10 and CIFAR-100 datasets.
 
 ## Usage
 
@@ -28,7 +28,7 @@ Example for getting results of CIFAR-10 dataset with Alexnet model:
 taskset -c 0 python3 Collect_inference_timings_CIFAR10.py -m alexnet
 python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
-The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after "-m" you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models.
+The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after ``-m`` you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models.
 We can repeat the above for CIFAR-100 dataset as follows:
 ```
 taskset -c 0 python3 Collect_inference_timings_CIFAR100.py -m alexnet
