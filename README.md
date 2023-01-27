@@ -9,7 +9,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 - Install the necessary python packages using the provided *requirements.txt* file.
 
-Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link).
+Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact* 
 
 ## Usage/Examples
 
