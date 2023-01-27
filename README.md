@@ -28,7 +28,7 @@ Example for getting results of CIFAR-10 dataset with Alexnet model:
 taskset -c 0 python3 Collect_inference_timings_CIFAR10.py -m alexnet
 python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
-The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after "-m" you can give "``custom_cnn``, alexnet, resnet, densenet, squeezenet and vgg" as command line arguments to get results for the respective CNN models.
+The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after "-m" you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models.
 We can repeat the above for CIFAR-100 dataset as follows:
 ```
 taskset -c 0 python3 Collect_inference_timings_CIFAR100.py -m alexnet
