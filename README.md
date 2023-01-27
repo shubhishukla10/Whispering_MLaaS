@@ -7,6 +7,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 *Memory*: Minimum 16GB
 
+
 ## Usage/Examples
 
 ### Distinguish Class Label Pairs
@@ -111,4 +112,8 @@ tmp_arr [ 1 ] = maxindex ;
 maxindex = tmp_arr [ ( v a l < maxval ) ∗ 1 ] ;
 ```
  
-The countermeasure can be evaluated by running the following: [Distinguish Class Label Pairs](#distinguish-class-label-pairs)
+The countermeasure can be evaluated by running experiments from the following sections:
+- [Distinguish Class Label Pairs](#distinguish-class-label-pairs)
+
+- [Distinguish Class Label Pairs Layerwise](#distinguish-class-label-pairs-layerwise)
+- [MLP Attack](#mlp-attack)
