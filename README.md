@@ -8,7 +8,8 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 *Memory*: Minimum 16GB
 
 ## Usage/Examples
-**Distinguish Class Label Pairs**
+
+### Distinguish Class Label Pairs
 
 Counting number of class pairs distingushable for CIFAR-10 (out of 45) and CIFAR-100 (out of 4950) dataset.
 
@@ -37,7 +38,7 @@ taskset -c python3 Collect_inference_timings_with_differential_privacy_CIFAR100.
 python3 Distinguish_Labels_CIFAR100.py -m alexnet
 ```
 
-**Distinguish Class Label Pairs Layerwise**
+### Distinguish Class Label Pairs Layerwise
 
 To get number of distinguishable pairs in each layer of the Custom CNN model used in the paper, run the following scripts. We observe that MaxPool layer has the highest number of pairs which are distingushable based on the timing values.
 ```
@@ -49,6 +50,44 @@ With differential privacy,
 taskset -c python3 Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
 python3 Distinguish_Labels_layerwise.py -d yes
 ```
+
+### MLP Attack
+
+#### Single Process Attack
+To build an MLP class label classifier for attack purpose, we first collect the timing traces for training our classifier. We set aside 20% of them for testing the attack model. Run the following scripts for the attack:
+
+```
+cd TCHES_Artifact/src/MLP_Attack/1_Process
+python3 Call_trace_generation.py
+python3 Run_MLP_Attack.py
+```
+With differential privacy,
+```
+cd TCHES_Artifact/src/MLP_Attack/1_Process_with_differential_privacy
+python3 Call_trace_generation.py
+python3 Run_MLP_Attack.py
+```
+
+#### 4 Process Attack
+To run the MLP attack in a noisy setup, where 3 processes are executing in parallel with the victim client, execute the following scripts:
+```
+cd TCHES_Artifact/src/MLP_Attack/4_Process
+gcc Fork_Spy_Victim_create_MLP_dataset.c -o Collect_Attack_data
+./Collect_Attack_data
+python3 Create_MLP_Dataset.py
+python3 Run_MLP_Attack.py
+```
+
+#### 8 Process Attack
+To run the MLP attack in a noisy setup, where 7 processes are executing in parallel with the victim client, execute the following scripts:
+```
+cd TCHES_Artifact/src/MLP_Attack/8_Process
+gcc Fork_Spy_Victim_create_MLP_dataset.c -o Collect_Attack_data
+./Collect_Attack_data
+python3 Create_MLP_Dataset.py
+python3 Run_MLP_Attack.py
+```
+
 ### Countermeasure
 First, create a separate virtual environment for the countermeasure.
 To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
