@@ -36,6 +36,7 @@ python3 Distinguish_Labels_CIFAR100.py -m alexnet
 ```
 
 **Distinguish Class Label Pairs Layerwise**
+
 To get number of distinguishable pairs in each layer of the Custom CNN model used in the paper, run the following scripts. We observe that MaxPool layer has the highest number of pairs which are distingushable based on the timing values.
 ```
 taskset -c python3 Collect_Timing_CustomCNN_layerwise.py
