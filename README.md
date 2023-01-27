@@ -7,7 +7,10 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 - *Memory*: Minimum 16GB
 
-- Install the necessary python packages using the provided *requirements.txt* file.
+- Install the necessary python packages using the provided *requirements.txt* file using the below command:
+  ```
+  pip install -r requirements.txt
+  ```
 
 Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact* 
 
