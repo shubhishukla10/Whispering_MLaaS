@@ -11,7 +11,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact* 
 
-## Usage/Examples
+## Usage
 
 ### Distinguish Class Label Pairs
 
