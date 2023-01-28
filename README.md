@@ -1,4 +1,4 @@
-# Whispering MLaaS
+# "Whispering MLaaS" Exploiting Timing Channels to Compromise User Privacy in Deep Neural Networks
 Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Compromise User Privacy in Deep Neural Networks
 
 **System Requirements:**
@@ -7,11 +7,14 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 
 - *Memory*: Minimum 16GB
 
-- Install the necessary python packages using the provided *requirements.txt* file.
+- Install the necessary python packages using the provided *requirements.txt* file using the below command:
+  ```
+  pip install -r requirements.txt
+  ```
 
-Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link).
+Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact*. The Models directory contains pre-trained CNN models. The Data directory consists of CIFAR-10 and CIFAR-100 datasets.
 
-## Usage/Examples
+## Usage
 
 ### Distinguish Class Label Pairs
 
@@ -22,23 +25,23 @@ cd TCHES_Artifact/src/Distinguish_Class_Pairs
 ```
 Example for getting results of CIFAR-10 dataset with Alexnet model:
 ```
-taskset -c python3 Collect_inference_timings_CIFAR10.py -m alexnet
+taskset -c 0 python3 Collect_inference_timings_CIFAR10.py -m alexnet
 python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
-The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after "-m" you can give "custom_cnn, alexnet, resnet, densenet, squeezenet and vgg" as command line arguments to get results for the respective CNN models.
+The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after ``-m`` you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models.
 We can repeat the above for CIFAR-100 dataset as follows:
 ```
-taskset -c python3 Collect_inference_timings_CIFAR100.py -m alexnet
+taskset -c 0 python3 Collect_inference_timings_CIFAR100.py -m alexnet
 python3 Distinguish_Labels_CIFAR100.py -m alexnet
 ```
 Similarly, you can get results for differentially trained model using Opacus library using the following scripts for CIFAR-10 and CIFAR-100 dataset:
 
 ```
-taskset -c python3 Collect_inference_timings_with_differential_privacy_CIFAR10.py -m alexnet
+taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR10.py -m alexnet
 python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
 ```
-taskset -c python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
+taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
 python3 Distinguish_Labels_CIFAR100.py -m alexnet
 ```
 
@@ -46,12 +49,12 @@ python3 Distinguish_Labels_CIFAR100.py -m alexnet
 
 To get number of distinguishable pairs in each layer of the Custom CNN model used in the paper, run the following scripts. We observe that MaxPool layer has the highest number of pairs which are distingushable based on the timing values.
 ```
-taskset -c python3 Collect_Timing_CustomCNN_layerwise.py
+taskset -c 0 python3 Collect_Timing_CustomCNN_layerwise.py
 python3 Distinguish_Labels_layerwise.py
 ```
 With differential privacy,
 ```
-taskset -c python3 Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
+taskset -c 0 python3 Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
 python3 Distinguish_Labels_layerwise.py -d yes
 ```
 
@@ -96,7 +99,7 @@ python3 Run_MLP_Attack.py
 First, create a separate virtual environment for the countermeasure.
 To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
 
-Once the PyTorch has been installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp*:
+Once the PyTorch has been successfully installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp* and build PyTorch again:
 
 Replace the following code snippet:
 ```
