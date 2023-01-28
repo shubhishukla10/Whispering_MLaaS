@@ -95,7 +95,7 @@ python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
-The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``.
+The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
 
 ### Countermeasure
 First, create a separate virtual environment for the countermeasure.
