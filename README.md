@@ -11,6 +11,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
   ```
   pip install -r requirements.txt
   ```
+**Clone the GitHub repository and then move the ``TCHES_Artifact`` folder to your home directory.**
 
 Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact*. The Models directory contains pre-trained CNN models. The Data directory consists of CIFAR-10 and CIFAR-100 datasets.
 
