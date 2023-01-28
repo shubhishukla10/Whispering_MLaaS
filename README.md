@@ -119,7 +119,7 @@ tmp_arr[0] = index ;
 tmp_arr[1] = maxindex ;
 maxindex = tmp_arr [( val < maxval ) ∗ 1] ;
 ```
-Also initialize ``int64_t tmp_arr[2];`` on top of the file with other variables.
+Also initialize ``int64_t tmp_arr[2];`` at the beginning of the file with other variables.
  
 The countermeasure can be evaluated by running experiments from the following sections:
 - [Distinguish Class Label Pairs](#distinguish-class-label-pairs): The number of distinguishable pairs should be less than 50% of the total number of pairs now.
