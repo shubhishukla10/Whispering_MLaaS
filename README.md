@@ -95,6 +95,8 @@ python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
+The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``.
+
 ### Countermeasure
 First, create a separate virtual environment for the countermeasure.
 To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
