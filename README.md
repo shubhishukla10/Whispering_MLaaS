@@ -95,6 +95,8 @@ python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
+The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``.
+
 ### Countermeasure
 First, create a separate virtual environment for the countermeasure.
 To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
@@ -117,6 +119,7 @@ tmp_arr[0] = index ;
 tmp_arr[1] = maxindex ;
 maxindex = tmp_arr [( val < maxval ) ∗ 1] ;
 ```
+Also initialize ``int64_t tmp_arr[2];`` at the beginning of the file with other variables.
  
 The countermeasure can be evaluated by running experiments from the following sections:
 - [Distinguish Class Label Pairs](#distinguish-class-label-pairs): The number of distinguishable pairs should be less than 50% of the total number of pairs now.
