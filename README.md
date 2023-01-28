@@ -6,6 +6,7 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 - *OS*: Linux
 
 - *Memory*: Minimum 16GB
+- *Python 3.8 or above*
 
 - Install the necessary python packages using the provided *requirements.txt* file using the below command:
   ```
