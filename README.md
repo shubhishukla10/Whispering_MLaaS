@@ -6,8 +6,12 @@ Artifact for the TCHES paper Whispering MLaaS: Exploiting Timing Channels to Com
 - *OS*: Linux
 
 - *Memory*: Minimum 16GB
-
-- Install the necessary python packages using the provided *requirements.txt* file using the below command:
+- *Python 3.8 or above*
+- Install PyTorch using the following command:
+```
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+```
+- Install the other necessary python packages using the provided *requirements.txt* file using the below command:
   ```
   pip install -r requirements.txt
   ```
