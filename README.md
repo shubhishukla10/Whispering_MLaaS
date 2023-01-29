@@ -101,33 +101,3 @@ python3 Run_MLP_Attack.py
 ```
 
 The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
-
-### Countermeasure
-First, create a separate virtual environment for the countermeasure.
-To implement the countermeasure for PyTorch on a local system, we require to install the PyTorch library from source. Follow the following reference to build PyTorch from source : https://github.com/pytorch/pytorch#from-source)
-
-Once the PyTorch has been successfully installed from source on your system. Make the following changes to the file *pytorch/aten/src/ATen/native/cpu/MaxPoolKernel.cpp* and build PyTorch again:
-
-Replace the following code snippet:
-```
-if ((val > maxval) || std::isnan(val)) {
-maxval = val;
-maxindex = index;
-}
-```
-with,
-```
-tmp_arr[0] = val ;
-tmp_arr[1] = maxval ;
-maxval = tmp_arr[( val < maxval ) ∗ 1] ;
-tmp_arr[0] = index ;
-tmp_arr[1] = maxindex ;
-maxindex = tmp_arr [( val < maxval ) ∗ 1] ;
-```
-Also initialize ``int64_t tmp_arr[2];`` at the beginning of the file with other variables.
- 
-The countermeasure can be evaluated by running experiments from the following sections:
-- [Distinguish Class Label Pairs](#distinguish-class-label-pairs): The number of distinguishable pairs should be less than 50% of the total number of pairs now.
-
-- [Distinguish Class Label Pairs Layerwise](#distinguish-class-label-pairs-layerwise): The number of distinguishable pairs should be less than 50% of the total number of pairs now for the MaxPool layer.
-- [MLP Attack](#mlp-attack): The attack accuracy should drop to 10%-15%.
