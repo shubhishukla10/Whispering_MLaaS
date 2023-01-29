@@ -104,4 +104,5 @@ The collection of timing traces takes up a lot of time, specially for the multi-
 
 ### Docker Image
 The docker image can be installed using the following command:
+
 ```docker pull shubhi1011/whispering_mlaas_final```
