@@ -64,7 +64,7 @@ print(clf.best_score_)
 
 ypred=clf.predict(X_test)
 
-"Accuracy and Confusion Matrix of MLP on training data:"
+print("MLP Attack Accuracy and Confusion Matrix for validation data:")
 print(accuracy_score(y_test,ypred))
 
 cm = confusion_matrix(ypred, y_test)
@@ -83,7 +83,7 @@ scaler.fit(X)
 
 ypred=clf.predict(X)
 
-"Accuracy and Confusion Matrix of MLP on test data:"
+print("MLP Attack Accuracy and Confusion Matrix for test data:")
 print(accuracy_score(y,ypred))
 
 cm = confusion_matrix(ypred, y)
