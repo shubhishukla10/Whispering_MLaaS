@@ -11,10 +11,14 @@ import pickle
 import pandas as pd
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+from pathlib import Path
+home = str(Path.home())
+
+base_path = home + "/TCHES_Artifact/"
+
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-base_path = "/home/tches/TCHES_Artifact/"
 
 class Net(nn.Module):
     def __init__(self):
