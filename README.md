@@ -110,4 +110,4 @@ We have created a docker image which has all the dependencies and the source cod
 ### License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
 
-Copyright (C) 2023 IIT Kharagpur, [Secured Embedded Architecture Lab (SEAL)](https://cse.iitkgp.ac.in/resgrp/seal/)
+Copyright (C) 2023 [Secured Embedded Architecture Lab (SEAL), IIT Kharagpur](https://cse.iitkgp.ac.in/resgrp/seal/)
