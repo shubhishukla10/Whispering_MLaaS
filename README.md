@@ -107,5 +107,5 @@ We have created a docker image which has all the dependencies and the source cod
 
 ```docker pull shubhi1011/whispering_mlaas_final```
 
-###License
+### License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
