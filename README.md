@@ -103,6 +103,6 @@ python3 Run_MLP_Attack.py
 The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
 
 ### Docker Image
-The docker image can be installed using the following command:
+We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
 
 ```docker pull shubhi1011/whispering_mlaas_final```
