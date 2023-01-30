@@ -106,3 +106,6 @@ The collection of timing traces takes up a lot of time, specially for the multi-
 We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
 
 ```docker pull shubhi1011/whispering_mlaas_final```
+
+###License
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
