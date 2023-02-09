@@ -5,9 +5,8 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 from scipy.stats import mannwhitneyu, ttest_ind
 import argparse
 from pathlib import Path
-home = str(Path.home())
 
-base_path = home + "/TCHES_Artifact/"
+base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 parser = argparse.ArgumentParser()
 

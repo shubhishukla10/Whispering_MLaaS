@@ -5,9 +5,8 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import argparse
 from pathlib import Path
-home = str(Path.home())
 
-base_path = home + "/TCHES_Artifact/"
+base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 layer = ["Convolution", "ReLU", "Convolution", "ReLU", "MaxPool", "Convolution", "ReLU", "Convolution", "ReLU", "MaxPool", "Convolution", "ReLU", "Convolution", "ReLU", "Flattening", "Fully Connected", "ReLU", "Fully Connected", "ReLU", "Output"]
 

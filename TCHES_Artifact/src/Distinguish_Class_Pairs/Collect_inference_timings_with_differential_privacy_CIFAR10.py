@@ -19,9 +19,8 @@ from opacus.utils.batch_memory_manager import BatchMemoryManager
 from tqdm.notebook import tqdm
 from opacus.validators import ModuleValidator
 from pathlib import Path
-home = str(Path.home())
 
-base_path = home + "/TCHES_Artifact/"
+base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 parser = argparse.ArgumentParser()
 

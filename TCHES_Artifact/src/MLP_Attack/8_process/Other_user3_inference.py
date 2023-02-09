@@ -9,10 +9,8 @@ import pandas as pd
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from pathlib import Path
-home = str(Path.home())
 
-base_path = home + "/TCHES_Artifact/"
-
+base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 

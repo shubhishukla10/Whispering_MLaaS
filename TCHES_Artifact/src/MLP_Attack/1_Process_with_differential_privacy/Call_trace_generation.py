@@ -5,9 +5,8 @@ import ctypes
 import pathlib
 import os
 from pathlib import Path
-home = str(Path.home())
 
-base_path = home + "/TCHES_Artifact/"
+base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 libname = base_path + "utils/lib_flush.so"
 flush_lib = ctypes.CDLL(libname)
