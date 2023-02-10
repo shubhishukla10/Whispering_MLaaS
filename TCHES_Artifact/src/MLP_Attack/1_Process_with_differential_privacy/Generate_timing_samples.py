@@ -12,7 +12,7 @@ import os
 import sys
 from pathlib import Path
 
-base_path = str(Path(__file__).parent.parent.parent) + "/"
+base_path = str(Path(__file__).parent.parent.parent.parent) + "/"
 
 libname = base_path + "utils/lib_flush.so"
 flush_lib = ctypes.CDLL(libname)
