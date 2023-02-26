@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
 
 unsigned int timestamp(void) {
           unsigned int bottom;
@@ -27,39 +31,39 @@ int main() {
         for(img=0; img<10; img++){
             printf("Image %d\n", img);
             for(i=0; i<100; i++){
-                sprintf(victim_command, "taskset -c 0 python Inference_victim_time_MLP_attack.py %d %d",c,img);
+                sprintf(victim_command, "taskset -c 0 python3 Inference_victim_time_MLP_attack.py %d %d",c,img);
                 if (!(child1 = fork())) {
                     // first child
                     system(victim_command);
                     exit(0);
                 } else if (!(child2 = fork())) {
                     // second child
-                    system("taskset -c 0 python Other_user1_inference.py");
+                    system("taskset -c 0 python3 Other_user1_inference.py");
                     // sleep(5);
                     exit(0);
                 } else if (!(child3 = fork())) {
                     // third child
-                    system("taskset -c 0 python Other_user2_inference.py");
+                    system("taskset -c 0 python3 Other_user2_inference.py");
                     exit(0);
                 } else if (!(child4 = fork())) {
                     // fourth child
-                    system("taskset -c 0 python Other_user3_inference.py");
+                    system("taskset -c 0 python3 Other_user3_inference.py");
                     exit(0);
                 } else if (!(child5 = fork())) {
                     // fifth child
-                    system("taskset -c 0 python Other_user4_inference.py");
+                    system("taskset -c 0 python3 Other_user4_inference.py");
                     exit(0);
                 } else if (!(child5 = fork())) {
                     // sixth child
-                    system("taskset -c 0 python Other_user5_inference.py");
+                    system("taskset -c 0 python3 Other_user5_inference.py");
                     exit(0);
                 } else if (!(child7 = fork())) {
                     // seventh child
-                    system("taskset -c 0 python Other_user6_inference.py");
+                    system("taskset -c 0 python3 Other_user6_inference.py");
                     exit(0);
                 } else {
                     // parent
-                    sprintf(victim_command, "taskset -c 0 python Inference_spy_time_MLP_attack.py %d %d",c,img);
+                    sprintf(victim_command, "taskset -c 0 python3 Inference_spy_time_MLP_attack.py %d %d",c,img);
                     time1 = timestamp();
                     system(victim_command);
                     wait(&child1);

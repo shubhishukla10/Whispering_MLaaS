@@ -12,7 +12,7 @@ from pathlib import Path
 
 base_path = str(Path(__file__).parent.parent.parent.parent) + "/"
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device("cpu")
 
 
 class Net(nn.Module):

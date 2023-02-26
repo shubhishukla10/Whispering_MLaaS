@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 unsigned int timestamp(void) {
           unsigned int bottom;
@@ -28,22 +31,22 @@ int main() {
             printf("Image %d\n", img);
             for(i=0; i<100; i++){
                 // printf("Start\n");
-                sprintf(victim_command, "taskset -c 0 python Inference_victim_time_MLP_attack.py %d %d",c,img);
+                sprintf(victim_command, "taskset -c 0 python3 Inference_victim_time_MLP_attack.py %d %d",c,img);
                 if (!(child1 = fork())) {
                     // first child
                     system(victim_command);
                     exit(0);
                 } else if (!(child2 = fork())) {
                     // second child
-                    system("taskset -c 0 python Other_user1_inference.py");
+                    system("taskset -c 0 python3 Other_user1_inference.py");
                     exit(0);
                 } else if (!(child3 = fork())) {
                     // third child
-                    system("taskset -c 0 python Other_user2_inference.py");
+                    system("taskset -c 0 python3 Other_user2_inference.py");
                     exit(0);
                 } else {
                     // parent
-                    sprintf(victim_command, "taskset -c 0 python Inference_spy_time_MLP_attack.py %d %d",c,img);
+                    sprintf(victim_command, "taskset -c 0 python3 Inference_spy_time_MLP_attack.py %d %d",c,img);
                     time1 = timestamp();
                     // printf("Parent\n");
                     system(victim_command);

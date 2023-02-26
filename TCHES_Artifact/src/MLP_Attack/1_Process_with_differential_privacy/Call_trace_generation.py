@@ -15,10 +15,10 @@ libname = base_path + "utils/lib_flush_pipe.so"
 flush_lib_pipe = ctypes.CDLL(libname)
 
 
-for i in range(1,101):
+for i in range(1000):
     flush_lib.main()
     flush_lib_pipe.main()
-    os.system("taskset -c 0 python Generate_timing_samples.py "+str(i))
+    os.system("taskset -c 0 python3 Generate_timing_samples.py "+str(i))
     
 
 

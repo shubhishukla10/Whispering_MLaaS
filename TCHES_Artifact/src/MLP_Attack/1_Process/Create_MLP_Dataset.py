@@ -26,7 +26,7 @@ df_label =  pd.DataFrame()
 for i in range(100):
     df_label["Median"+str(i)] = df[i]
 df_label["Class"] = df[100]
-df_label.to_csv('Attack_Timing_Data/Attack_train_data.csv')
+df_label.to_csv('Attack_Dataset/Attack_train_data.csv')
 
 #Create Test Data
 med_all = []
@@ -48,4 +48,4 @@ df_label =  pd.DataFrame()
 for i in range(100):
     df_label["Median"+str(i)] = df[i]
 df_label["Class"] = df[100]
-df_label.to_csv('Attack_Timing_Data/Attack_test_data.csv')
+df_label.to_csv('Attack_Dataset/Attack_test_data.csv')

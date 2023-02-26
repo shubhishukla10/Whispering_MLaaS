@@ -30,7 +30,7 @@ flush_lib = ctypes.CDLL(libname)
 libname = base_path+"utils/lib_flush_pipe.so"
 flush_lib_pipe = ctypes.CDLL(libname)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device("cpu")
 
 
 class Net(nn.Module):
