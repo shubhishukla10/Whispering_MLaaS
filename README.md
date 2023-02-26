@@ -49,7 +49,7 @@ python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
 ```
 taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
-python3 Distinguish_Labels_CIFAR100.py -m alexnet
+python3 Distinguish_Labels_CIFAR100.py -m alexnet -d yes
 ```
 
 ### Distinguish Class Label Pairs Layerwise
@@ -73,12 +73,14 @@ To build an MLP class label classifier for attack purpose, we first collect the 
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process
 python3 Call_trace_generation.py
+python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 With differential privacy,
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process_with_differential_privacy
 python3 Call_trace_generation.py
+python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
@@ -96,7 +98,7 @@ python3 Run_MLP_Attack.py
 To run the MLP attack in a noisy setup, where 7 processes are executing in parallel with the victim client, execute the following scripts:
 ```
 cd TCHES_Artifact/src/MLP_Attack/8_Process
-gcc Fork_Spy_Victim_create_MLP_dataset.c -o Collect_Attack_data
+gcc Fork_Spy_Victim_create_MLP_dataset_8Process.c -o Collect_Attack_data
 ./Collect_Attack_data
 python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
