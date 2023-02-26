@@ -69,7 +69,7 @@ python3 Distinguish_Labels_layerwise.py -d yes
 ### MLP Attack
 
 #### Single Process Attack
-To build an MLP class label classifier for attack purpose, we first collect the timing traces for training our classifier. We set aside 20% of them for testing the attack model. For the single process attack we assume that the adversary collects the timing traces from inside the victim's code itself to get the least noisy timing traces. Run the following scripts for the attack:
+To build an MLP class label classifier for attack purpose, we first collect the timing traces for training our classifier. We set aside 20% of them for testing the attack model. *For the single process attack we assume that the adversary collects the timing traces from inside the victim's code itself to get the least noisy timing traces.* Run the following scripts for the attack:
 
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process
