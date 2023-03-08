@@ -4,13 +4,13 @@ Artifact for the TCHES 2023 (Issue 2) paper **Whispering MLaaS: Exploiting Timin
 **System Requirements:**
 
 - *OS*: Linux
-
+- *x86 processor*
 - *Memory*: Minimum 16GB
 - *Python 3.8 or above*
 - Install PyTorch using the following command:
-```
-pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
-```
+  ```
+  pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+  ```
 - Install the other necessary python packages using the provided *requirements.txt* file using the below command:
   ```
   pip install -r requirements.txt
@@ -49,7 +49,7 @@ python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
 ```
 taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
-python3 Distinguish_Labels_CIFAR100.py -m alexnet
+python3 Distinguish_Labels_CIFAR100.py -m alexnet -d yes
 ```
 
 ### Distinguish Class Label Pairs Layerwise
@@ -68,17 +68,19 @@ python3 Distinguish_Labels_layerwise.py -d yes
 ### MLP Attack
 
 #### Single Process Attack
-To build an MLP class label classifier for attack purpose, we first collect the timing traces for training our classifier. We set aside 20% of them for testing the attack model. Run the following scripts for the attack:
+To build an MLP class label classifier for attack purpose, we first collect the timing traces for training our classifier. We set aside 20% of them for testing the attack model. *For the single process attack we assume that the adversary collects the timing traces from inside the victim's code itself to get the least noisy timing traces.* Run the following scripts for the attack:
 
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process
 python3 Call_trace_generation.py
+python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 With differential privacy,
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process_with_differential_privacy
 python3 Call_trace_generation.py
+python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
@@ -96,7 +98,7 @@ python3 Run_MLP_Attack.py
 To run the MLP attack in a noisy setup, where 7 processes are executing in parallel with the victim client, execute the following scripts:
 ```
 cd TCHES_Artifact/src/MLP_Attack/8_Process
-gcc Fork_Spy_Victim_create_MLP_dataset.c -o Collect_Attack_data
+gcc Fork_Spy_Victim_create_MLP_dataset_8Process.c -o Collect_Attack_data
 ./Collect_Attack_data
 python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
@@ -107,7 +109,7 @@ The collection of timing traces takes up a lot of time, specially for the multi-
 ### Docker Image
 We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
 
-```docker pull shubhi1011/whispering_mlaas_final```
+```docker pull shubhi1011/whispering_mlaas_tches```
 
 ### License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.

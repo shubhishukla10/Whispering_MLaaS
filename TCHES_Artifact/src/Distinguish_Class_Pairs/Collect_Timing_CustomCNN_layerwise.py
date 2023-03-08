@@ -9,6 +9,7 @@ import pandas as pd
 import ctypes
 import pathlib
 import os
+from pathlib import Path
 
 base_path = str(Path(__file__).parent.parent.parent) + "/"
 
