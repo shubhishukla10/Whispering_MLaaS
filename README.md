@@ -38,7 +38,7 @@ Download the data and models from [here](https://drive.google.com/drive/folders/
     └── utils
 ```
 
-### Docker Image
+## Docker Image
 We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
 
 ```docker pull shubhi1011/whispering_mlaas_tches```
