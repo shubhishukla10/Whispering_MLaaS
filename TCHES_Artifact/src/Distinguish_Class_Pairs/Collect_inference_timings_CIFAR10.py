@@ -32,7 +32,7 @@ flush_lib_pipe = ctypes.CDLL(libname)
 
 device = device = torch.device("cpu")
 
-
+#Initialize Custom CNN model class
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -71,7 +71,7 @@ class Net(nn.Module):
         output = self.out(x)
         return output
 
-
+# Initialize the model variable with selected model for timing analysis
 if args.model:
     print("Displaying Output as: % s" % args.model)
     flag=0
@@ -102,6 +102,7 @@ if args.model:
             os.system('mkdir -p ' + base_path + 'Timing_Data/CIFAR10/'+args.model+'/Full_Function')
 
         for x_i in range(10):
+            # If the selected model is Custom CNN then use original CIFAR-10 dataset images else the resized images (224x224)
             if args.model == "custom_cnn":
                 pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_'+str(x_i)+'_data.pkl', 'rb')
             else:
@@ -110,6 +111,7 @@ if args.model:
             pkl_file.close()
             t_all = []
             print("Collecting class " +str(x_i)+ " inference time values ...")
+            #Flush the cache and pipeline before inference of images of each class
             flush_lib.main()
             flush_lib_pipe.main()
             for img in range(10):
@@ -117,7 +119,7 @@ if args.model:
                     t1 = time.perf_counter()
                     test_output = model(X_data[img*10])
                     t2 = time.perf_counter()
-                    t_all.append((t2-t1)*1e6)
+                    t_all.append((t2-t1)*1e6)   # Collecting timing values
             df = pd.DataFrame(t_all, columns=['Time'])
             df.to_csv(base_path+'Timing_Data/CIFAR10/'+args.model+'/Full_Function/Class_'+str(x_i)+'.csv')
         print("Finished!")
