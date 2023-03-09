@@ -33,36 +33,36 @@ int main() {
             for(i=0; i<100; i++){
                 sprintf(victim_command, "taskset -c 0 python3 Inference_victim_time_MLP_attack.py %d %d",c,img);
                 if (!(child1 = fork())) {
-                    // first child
+                    // first child --> Victim Process
                     system(victim_command);
                     exit(0);
                 } else if (!(child2 = fork())) {
-                    // second child
+                    // second child --> Other User 1 process
                     system("taskset -c 0 python3 Other_user1_inference.py");
                     // sleep(5);
                     exit(0);
                 } else if (!(child3 = fork())) {
-                    // third child
+                    // third child --> Other user 2 process
                     system("taskset -c 0 python3 Other_user2_inference.py");
                     exit(0);
                 } else if (!(child4 = fork())) {
-                    // fourth child
+                    // fourth child --> Other user 3 process
                     system("taskset -c 0 python3 Other_user3_inference.py");
                     exit(0);
                 } else if (!(child5 = fork())) {
-                    // fifth child
+                    // fifth child --> Other user 4 process
                     system("taskset -c 0 python3 Other_user4_inference.py");
                     exit(0);
                 } else if (!(child5 = fork())) {
-                    // sixth child
+                    // sixth child --> Other user 5 process
                     system("taskset -c 0 python3 Other_user5_inference.py");
                     exit(0);
                 } else if (!(child7 = fork())) {
-                    // seventh child
+                    // seventh child --> Other user 6 process
                     system("taskset -c 0 python3 Other_user6_inference.py");
                     exit(0);
                 } else {
-                    // parent
+                    // parent --> Spy process
                     sprintf(victim_command, "taskset -c 0 python3 Inference_spy_time_MLP_attack.py %d %d",c,img);
                     time1 = timestamp();
                     system(victim_command);
