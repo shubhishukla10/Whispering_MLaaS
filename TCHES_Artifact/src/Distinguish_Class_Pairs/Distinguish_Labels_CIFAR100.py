@@ -30,8 +30,8 @@ if args.model in model_list:
 
                 for c_j in range(c_i+1,100):
                         file2 = pd.read_csv(data_path +'Class_'+ str(c_j) +'.csv')
-                        dist1 = file1['Time'].to_numpy()
-                        dist2 = file2['Time'].to_numpy()
+                        dist1 = file1['Time'].to_numpy()        # dist1 stores timing values of Class i
+                        dist2 = file2['Time'].to_numpy()        # dist2 stores timing values of Class j
 
                         mean_0 = np.mean(dist1[1:])
                         sd_0 = np.std(dist1[1:])
@@ -51,10 +51,11 @@ if args.model in model_list:
                         sd_10 = np.std(reduce_time_arr_1)
                         median_10 = np.median(reduce_time_arr_1)
 
+                        # Perfrom t-test on timing distributions of Class i and j
                         ttest_res = ttest_ind(reduce_time_arr_0, reduce_time_arr_1, equal_var=False)
 
                         dfStat_t = dfStat_t.append({'Class i' : c_i, 'Class j': c_j, 'Statistic' : ttest_res.statistic, 'P-value(rounded)':round(ttest_res.pvalue, 6), 'P-value(exp)':ttest_res.pvalue}, ignore_index=True)
-
+        # Store t-test results for all class pairs of CIFAR-100
         dfStat_t.to_csv(data_path+'/TTest_Results.csv')
 
         cnt = 0
