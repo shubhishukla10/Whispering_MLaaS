@@ -22,20 +22,20 @@ Download the data and models from [here](https://drive.google.com/drive/folders/
 ```
 .
 └── TCHES_Artifact
-    ├── Attack_Data
-    ├── Data
-    ├── Models
+    ├── Attack_Data     # Contains timing attack dataset and script to run the attack
+    ├── Data            # Contains CIFAR-10 data which needs to be downloaded from provided drive link
+    ├── Models          # Contains traine models which need to be downloaded from provided drive link
     ├── src
-    │   ├── Distinguish_Class_Pairs
+    │   ├── Distinguish_Class_Pairs     # Contains scripts for timing analysis on PyTorch's CNN models with and without DP
     │   └── MLP_Attack
-    │       ├── 1_Process
-    │       ├── 1_Process_with_differential_privacy
-    │       ├── 4_Process
-    │       └── 8_process
+    │       ├── 1_Process               # Contains code to run the MLP attack in noiseless setup
+    │       ├── 1_Process_with_differential_privacy   # Contains code to run the MLP attack in noiseless setup with DP enabled
+    │       ├── 4_Process               # Contains code to run the MLP attack in noisy setup with 4 concurrent processes
+    │       └── 8_process               # Contains code to run the MLP attack in noisy setup with 8 concurrent processes
     ├── Timing_Data
-    │   ├── CIFAR10
-    │   └── CIFAR100
-    └── utils
+    │   ├── CIFAR10                     # Data collected for timing analysis with CIFAR-10 dataset is stored here
+    │   └── CIFAR100                    # Data collected for timing analysis with CIFAR-100 dataset is stored here
+    └── utils                           # provides utilities for flushing cache and pipeline
 ```
 
 ## Docker Image
