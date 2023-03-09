@@ -38,6 +38,12 @@ Download the data and models from [here](https://drive.google.com/drive/folders/
     └── utils
 ```
 
+### Docker Image
+We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
+
+```docker pull shubhi1011/whispering_mlaas_tches```
+
+
 ## Usage
 
 ### Distinguish Class Label Pairs
@@ -125,11 +131,6 @@ python3 Run_MLP_Attack.py
 ```
 
 The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
-
-### Docker Image
-We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
-
-```docker pull shubhi1011/whispering_mlaas_tches```
 
 ### License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
