@@ -21,93 +21,34 @@ Download the data and models from [here](https://drive.google.com/drive/folders/
 ## Directory Structure
 .
 └── TCHES_Artifact
+
     ├── Attack_Data
-    │   ├── 1_Process_test_data.csv
-    │   ├── 1_Process_train_data.csv
-    │   ├── 4_Process_test_data.csv
-    │   ├── 4_Process_train_data.csv
-    │   ├── 8_Process_test_data.csv
-    │   ├── 8_Process_train_data.csv
-    │   └── Run_MLP_Attack.py
+    
     ├── Data
-    │   
+    
     ├── Models
-    │  
+    
     ├── src
+    
     │   ├── Distinguish_Class_Pairs
-    │   │   ├── Collect_inference_timings_CIFAR100.py
-    │   │   ├── Collect_inference_timings_CIFAR10.py
-    │   │   ├── Collect_inference_timings_with_differential_privacy_CIFAR100.py
-    │   │   ├── Collect_inference_timings_with_differential_privacy_CIFAR10.py
-    │   │   ├── Collect_Timing_CustomCNN_layerwise.py
-    │   │   ├── Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
-    │   │   ├── Distinguish_Labels_CIFAR100.py
-    │   │   ├── Distinguish_Labels_CIFAR10.py
-    │   │   └── Distinguish_Labels_layerwise.py
+    
     │   └── MLP_Attack
+    
     │       ├── 1_Process
-    │       │   ├── Attack_Dataset
-    │       │   ├── Attack_Timing_Data
-    │       │   ├── Call_trace_generation.py
-    │       │   ├── Create_MLP_Dataset.py
-    │       │   ├── Generate_timing_samples.py
-    │       │   └── Run_MLP_Attack.py
+    
     │       ├── 1_Process_with_differential_privacy
-    │       │   ├── Attack_Dataset
-    │       │   ├── Attack_Timing_Data
-    │       │   │   └── TimeInstance_1
-    │       │   │       └── Class_0_100img_timing.csv
-    │       │   ├── Call_trace_generation.py
-    │       │   ├── Create_MLP_Dataset.py
-    │       │   ├── Generate_timing_samples.py
-    │       │   └── Run_MLP_Attack.py
+    
     │       ├── 4_Process
-    │       │   ├── Attack_Dataset
-    │       │   ├── Attack_Timing_Data
-    │       │   │   ├── Class0
-    │       │   │   │   ├── Overall_Inference_Time0_Image0.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image1.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image2.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image3.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image4.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image5.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image6.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image7.csv
-    │       │   │   │   ├── Overall_Inference_Time0_Image8.csv
-    │       │   │   │   └── Overall_Inference_Time0_Image9.csv
-    │       │   │   └── Class8
-    │       │   ├── Collect_Attack_data
-    │       │   ├── Create_MLP_Dataset.py
-    │       │   ├── Fork_Spy_Victim_create_MLP_dataset.c
-    │       │   ├── Inference_spy_time_MLP_attack.py
-    │       │   ├── Inference_victim_time_MLP_attack.py
-    │       │   ├── Other_user1_inference.py
-    │       │   ├── Other_user2_inference.py
-    │       │   └── Run_MLP_Attack.py
+    
     │       └── 8_process
-    │           ├── Attack_Dataset
-    │           ├── Attack_Timing_Data
-    │           ├── Collect_Attack_data
-    │           ├── Create_MLP_Dataset.py
-    │           ├── Fork_Spy_Victim_create_MLP_dataset_8Process.c
-    │           ├── Inference_spy_time_MLP_attack.py
-    │           ├── Inference_victim_time_MLP_attack.py
-    │           ├── Other_user1_inference.py
-    │           ├── Other_user2_inference.py
-    │           ├── Other_user3_inference.py
-    │           ├── Other_user4_inference.py
-    │           ├── Other_user5_inference.py
-    │           ├── Other_user6_inference.py
-    │           └── Run_MLP_Attack.py
+    
     ├── Timing_Data
+    
     │   ├── CIFAR10
+    
     │   └── CIFAR100
+    
     └── utils
-        ├── flush_cache.cc
-        ├── flush_pipe.cc
-        ├── lib_flush_pipe.so
-        ├── lib_flush.so
-        └── Makefile
 
 ## Usage
 
