@@ -19,37 +19,24 @@ Artifact for the TCHES 2023 (Issue 2) paper **Whispering MLaaS: Exploiting Timin
 Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact*. The Models directory contains pre-trained CNN models. The Data directory consists of CIFAR-10 and CIFAR-100 datasets.
 
 ## Directory Structure
+``
 .
-
 └── TCHES_Artifact
-
     ├── Attack_Data
-    
     ├── Data
-    
     ├── Models
-    
     ├── src
-    
     │   ├── Distinguish_Class_Pairs
-    
     │   └── MLP_Attack
-    
     │       ├── 1_Process
-    
     │       ├── 1_Process_with_differential_privacy
-    
     │       ├── 4_Process
-    
     │       └── 8_process
-    
     ├── Timing_Data
-    
     │   ├── CIFAR10
-    
     │   └── CIFAR100
-    
     └── utils
+``
 
 ## Usage
 
