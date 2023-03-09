@@ -18,6 +18,32 @@ Artifact for the TCHES 2023 (Issue 2) paper **Whispering MLaaS: Exploiting Timin
 
 Download the data and models from [here](https://drive.google.com/drive/folders/1LOzsXqyVSHymXbVUeRejMJE6EpwIpKPL?usp=share_link) and move them to *Data* and *Models* directory inside *TCHES_Artifact*. The Models directory contains pre-trained CNN models. The Data directory consists of CIFAR-10 and CIFAR-100 datasets.
 
+## Directory Structure
+```
+.
+└── TCHES_Artifact
+    ├── Attack_Data
+    ├── Data
+    ├── Models
+    ├── src
+    │   ├── Distinguish_Class_Pairs
+    │   └── MLP_Attack
+    │       ├── 1_Process
+    │       ├── 1_Process_with_differential_privacy
+    │       ├── 4_Process
+    │       └── 8_process
+    ├── Timing_Data
+    │   ├── CIFAR10
+    │   └── CIFAR100
+    └── utils
+```
+
+## Docker Image
+We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
+
+```docker pull shubhi1011/whispering_mlaas_tches```
+
+
 ## Usage
 
 ### Distinguish Class Label Pairs
@@ -105,11 +131,6 @@ python3 Run_MLP_Attack.py
 ```
 
 The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
-
-### Docker Image
-We have created a docker image which has all the dependencies and the source code pre-installed. The docker image can be installed using the following command:
-
-```docker pull shubhi1011/whispering_mlaas_tches```
 
 ### License
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
