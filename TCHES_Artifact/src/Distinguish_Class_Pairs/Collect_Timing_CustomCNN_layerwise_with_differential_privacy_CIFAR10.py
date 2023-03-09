@@ -15,6 +15,7 @@ base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 device = torch.device("cpu")
 
+# Define Custom CNN model 
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -29,7 +30,7 @@ class Net(nn.Module):
         self.F2 = nn.Linear(128, 64)
         self.out = nn.Linear(64, 10)
 
-
+    # Timestamping between each layer in the inference for layer-wise timing analysis
     def forward(self, x):
         t = []
         t.append(time.perf_counter())
@@ -81,14 +82,16 @@ net = Net()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr = 0.001) 
 
+# Load Custom CNN model trained with differential privacy
 net.load_state_dict(torch.load(base_path+"Models/CustomCNN_OpacusDP/cnn"))
 
+# Load the dataset
 pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_data.pkl', 'rb')
 X_all = pickle.load(pkl_file)
 pkl_file.close()
 
 os.system('mkdir -p '+base_path+'Timing_Data/CIFAR10/CustomCNN_DP/Layer_wise')
-for x_i in range(10):
+for x_i in range(10):   # Collect layer-wise timing for each class of CIFAR-10
     t_all = []
     print("Layer wise timing data for class "+str(x_i)+" is collected.")
     for y_i in range(1000):
