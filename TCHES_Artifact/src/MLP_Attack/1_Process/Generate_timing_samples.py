@@ -22,6 +22,7 @@ flush_lib_pipe = ctypes.CDLL(libname)
 
 device = torch.device("cpu")
 
+# Define Custom CNN model
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -68,6 +69,7 @@ net = Net()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr = 0.001) 
 
+# Load trained Custom CNN model
 net.load_state_dict(torch.load(base_path+"Models/CustomCNN/cnn"))
 
 X_data=[]
@@ -89,10 +91,10 @@ for x_i in range(10):
 
 os.system('mkdir -p Attack_Timing_Data/TimeInstance_'+str(TI_val))
 
-for x_i in range(10):
+for x_i in range(10):   # Collect inference timing traces for images of 10 classes
     print(x_i)
     df = pd.DataFrame()
-    for r in range(100):
+    for r in range(100):    # Collect traces for 100 different image of each class
         time=[]
         flush_lib.main()
         flush_lib_pipe.main()
