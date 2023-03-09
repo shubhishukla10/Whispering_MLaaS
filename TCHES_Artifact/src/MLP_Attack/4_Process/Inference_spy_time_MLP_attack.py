@@ -67,6 +67,6 @@ pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_data.pkl', 'rb')
 X_all = pickle.load(pkl_file)
 pkl_file.close()
 
-# print("Inside Spy Inference")
+# Inside Spy Inference --> Running 1100 inferences of Class 0 image
 for i in range(1100):
     test_output = net(X_all[0])
