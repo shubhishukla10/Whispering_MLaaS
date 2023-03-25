@@ -33,19 +33,19 @@ int main() {
                 // printf("Start\n");
                 sprintf(victim_command, "taskset -c 0 python3 Inference_victim_time_MLP_attack.py %d %d",c,img);
                 if (!(child1 = fork())) {
-                    // first child
+                    // first child --> Victim Process
                     system(victim_command);
                     exit(0);
                 } else if (!(child2 = fork())) {
-                    // second child
+                    // second child --> Other user process 1
                     system("taskset -c 0 python3 Other_user1_inference.py");
                     exit(0);
                 } else if (!(child3 = fork())) {
-                    // third child
+                    // third child --> Other user process 2
                     system("taskset -c 0 python3 Other_user2_inference.py");
                     exit(0);
                 } else {
-                    // parent
+                    // parent --> Spy process
                     sprintf(victim_command, "taskset -c 0 python3 Inference_spy_time_MLP_attack.py %d %d",c,img);
                     time1 = timestamp();
                     // printf("Parent\n");

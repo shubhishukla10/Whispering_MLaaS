@@ -74,7 +74,7 @@ for x_i in range(10):
     pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_'+str(x_i)+'_data.pkl', 'rb')
     X_data.append(pickle.load(pkl_file))
 
-# print("Inside Victim Inference")
+# Inside Victim Inference --> Running 1000 inference of a particular class
 for i in range(1000):
     test_output = net(X_data[int(Class_Val)][(int(Img_Val))])
 

@@ -32,7 +32,7 @@ flush_lib_pipe = ctypes.CDLL(libname)
 
 device = torch.device("cpu")
 
-
+# Define Custom CNN model
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -71,7 +71,7 @@ class Net(nn.Module):
         output = self.out(x)
         return output
 
-
+# Initialize the model based on command line arguments
 if args.model:
     print("Displaying Output as: % s" % args.model)
     flag=0
@@ -101,7 +101,7 @@ if args.model:
         if not os.path.exists(base_path+'Timing_Data/CIFAR100/'+args.model+'/Full_Function'):
             os.system('mkdir -p ' + base_path + 'Timing_Data/CIFAR100/'+args.model+'/Full_Function')
 
-        for x_i in range(100):
+        for x_i in range(100):  # Collect inference time for 100 classes of CIFAR-100
             if args.model == "custom_cnn":
                 pkl_file = open(base_path+'Data/CIFAR100/CNN_Class_'+str(x_i)+'_data.pkl', 'rb')
             else:
@@ -110,9 +110,10 @@ if args.model:
             pkl_file.close()
             t_all = []
             print("Collecting class " +str(x_i)+ " inference time values ...")
+            # Flush cache and pipeline
             flush_lib.main()
             flush_lib_pipe.main()
-            for img in range(10):
+            for img in range(10):   # Collect inference time for 10 images of a particular class
                 for y_i in range(100):
                     t1 = time.perf_counter()
                     test_output = model(X_data[img*10])

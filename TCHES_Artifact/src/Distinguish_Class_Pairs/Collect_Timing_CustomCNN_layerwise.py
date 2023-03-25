@@ -15,6 +15,7 @@ base_path = str(Path(__file__).parent.parent.parent) + "/"
 
 device = torch.device("cpu")
 
+#Define the Custom CNN model
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -29,7 +30,7 @@ class Net(nn.Module):
         self.F2 = nn.Linear(128, 64)
         self.out = nn.Linear(64, 10)
 
-
+    # Collect timestamps between each layer during inference
     def forward(self, x):
         t = []
         t.append(time.perf_counter())
@@ -81,14 +82,16 @@ net = Net()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr = 0.001) 
 
+# Load trained model
 net.load_state_dict(torch.load(base_path+"Models/CustomCNN/cnn"))
 
+# Load dataset images
 pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_data.pkl', 'rb')
 X_all = pickle.load(pkl_file)
 pkl_file.close()
 
 os.system('mkdir -p '+base_path+'Timing_Data/CIFAR10/CustomCNN/Layer_wise')
-for x_i in range(10):
+for x_i in range(10):   # Collect layer-wise timing for each class
     t_all = []
     print("Layer wise timing data for class "+str(x_i)+" is collected.")
     for y_i in range(1000):
@@ -96,6 +99,6 @@ for x_i in range(10):
         test_output, time_layers = net(X_all[x_i])
         for tim in range(20):
             t_a[tim] = time_layers[tim+1] - time_layers[tim]
-        t_all.append(t_a)
+        t_all.append(t_a) 
     df = pd.DataFrame(t_all, columns=['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18', 'L19', 'L20'])
     df.to_csv(base_path+'Timing_Data/CIFAR10/CustomCNN/Layer_wise/Class_'+ str(x_i)+'_layerwise.csv')

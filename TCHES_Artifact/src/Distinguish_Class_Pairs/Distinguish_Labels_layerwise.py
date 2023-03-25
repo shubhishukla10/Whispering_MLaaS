@@ -26,8 +26,8 @@ for l in range(1,21):
                         else:
                                 file1 = pd.read_csv(base_path+'Timing_Data/CIFAR10/CustomCNN/Layer_wise/Class_'+ str(c_i)+'_layerwise.csv')
                                 file2 = pd.read_csv(base_path+'Timing_Data/CIFAR10/CustomCNN/Layer_wise/Class_'+ str(c_j)+'_layerwise.csv')
-                        dist1 = file1['L'+str(l)].to_numpy()
-                        dist2 = file2['L'+str(l)].to_numpy()
+                        dist1 = file1['L'+str(l)].to_numpy()    # dist1 stores timing values of Class i for some layer x
+                        dist2 = file2['L'+str(l)].to_numpy()    # dist2 stores timing values of Class j for some layer x
 
                         mean_0 = np.mean(dist1[1:])
                         sd_0 = np.std(dist1[1:])
@@ -46,7 +46,8 @@ for l in range(1,21):
                         mean_10 = np.mean(reduce_time_arr_1)
                         sd_10 = np.std(reduce_time_arr_1)
                         median_10 = np.median(reduce_time_arr_1)
-
+                        
+                        # Perform t-test on timing distributions of Class i and j for layer x
                         ttest_res = ttest_ind(reduce_time_arr_0, reduce_time_arr_1, equal_var=False)
 
                         dfStat_t = dfStat_t.append({'Class i' : c_i, 'Class j': c_j, 'Statistic' : ttest_res.statistic, 'P-value(rounded)':round(ttest_res.pvalue, 6), 'P-value(exp)':ttest_res.pvalue}, ignore_index=True)

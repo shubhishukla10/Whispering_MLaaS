@@ -22,6 +22,7 @@ flush_lib_pipe = ctypes.CDLL(libname)
 
 device = torch.device("cpu")
 
+# Define Custom CNN model
 class Net(nn.Module):
     def __init__(self):
         super().__init__()
@@ -68,8 +69,10 @@ net = Net()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr = 0.001) 
 
+# Load trained Custom CNN model
 net.load_state_dict(torch.load(base_path+"Models/CustomCNN_OpacusDP/cnn"))
 
+# Load CIFAR-10 data
 X_data=[]
 for x_i in range(10):
     pkl_file = open(base_path+'Data/CIFAR10/CNN_Class_'+str(x_i)+'_data.pkl', 'rb')
