@@ -71,7 +71,9 @@ Example for getting results of CIFAR-10 dataset with Alexnet model:
 taskset -c 0 python3 Collect_inference_timings_CIFAR10.py -m alexnet
 python3 Distinguish_Labels_CIFAR10.py -m alexnet
 ```
-The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after ``-m`` you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models. 
+(Refer to Figure 3 in paper for our results)
+
+The first python script will collect timing samples for each class and the second script will count the number of distingushable pairs out of 45 from the collected samples. In the above example after ``-m`` you can give ``custom_cnn``, ``alexnet``, ``resnet``, ``densenet``, ``squeezenet`` and ``vgg``" as command line arguments to get results for the respective CNN models.
 
 *In all our python scripts for collecting timing values we flush the pipeline and cache before collecting inference timing traces for each class label to make the start state consistent for inference of each class label. We have included the scripts for flushing cache and pipeline inside the utils directory, which have been used in all our timing trace collection codes.*
 
@@ -80,6 +82,8 @@ We can repeat the above for CIFAR-100 dataset as follows:
 taskset -c 0 python3 Collect_inference_timings_CIFAR100.py -m alexnet
 python3 Distinguish_Labels_CIFAR100.py -m alexnet
 ```
+(Refer to Figure 3 in paper for our results)
+
 Similarly, you can get results for differentially trained model using Opacus library using the following scripts for CIFAR-10 and CIFAR-100 dataset:
 
 ```
@@ -90,6 +94,7 @@ python3 Distinguish_Labels_CIFAR10.py -m alexnet
 taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
 python3 Distinguish_Labels_CIFAR100.py -m alexnet -d yes
 ```
+(Refer to Figure 9 in paper for our results)
 
 ### Distinguish Class Label Pairs Layerwise
 
