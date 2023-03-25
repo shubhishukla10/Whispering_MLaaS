@@ -46,7 +46,7 @@ We have created a docker image which has all the dependencies and the source cod
 
 ## Usage
 
-### Utils
+### Build utils
 Inside ``utils`` directory we have provided prebuilt binaries for the cache and pipeline flush code. These binaries can also be built running the following command from inside the ``utils`` directory:
 ```
 cd TCHES_Artifact/utils
