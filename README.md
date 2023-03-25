@@ -94,7 +94,7 @@ python3 Distinguish_Labels_CIFAR10.py -m alexnet
 taskset -c 0 python3 Collect_inference_timings_with_differential_privacy_CIFAR100.py -m alexnet
 python3 Distinguish_Labels_CIFAR100.py -m alexnet -d yes
 ```
-(Refer to Figure 9 in paper for our results)
+(Refer to Figure 9(a) in paper for our results)
 
 ### Distinguish Class Label Pairs Layerwise
 
@@ -103,11 +103,14 @@ To get number of distinguishable pairs in each layer of the Custom CNN model use
 taskset -c 0 python3 Collect_Timing_CustomCNN_layerwise.py
 python3 Distinguish_Labels_layerwise.py
 ```
+(Refer to Figure 4(a) in paper for our results)
+
 With differential privacy,
 ```
 taskset -c 0 python3 Collect_Timing_CustomCNN_layerwise_with_differential_privacy_CIFAR10.py
 python3 Distinguish_Labels_layerwise.py -d yes
 ```
+(Refer to Figure 9(b) in paper for our results)
 
 ### MLP Attack
 
@@ -120,6 +123,8 @@ python3 Call_trace_generation.py
 python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
+(Refer to Figure 8(a) in paper for our results)
+
 With differential privacy,
 ```
 cd TCHES_Artifact/src/MLP_Attack/1_Process_with_differential_privacy
@@ -127,6 +132,7 @@ python3 Call_trace_generation.py
 python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
+(Refer to Figure 10(a) in paper for our results)
 
 #### 4 Process Attack
 To run the MLP attack in a noisy setup, where 3 processes are executing in parallel with the victim client, execute the following scripts:
@@ -138,6 +144,8 @@ python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
 
+(Refer to Figure 8(b) in paper for our results)
+
 #### 8 Process Attack
 To run the MLP attack in a noisy setup, where 7 processes are executing in parallel with the victim client, execute the following scripts:
 ```
@@ -147,6 +155,8 @@ gcc Fork_Spy_Victim_create_MLP_dataset_8Process.c -o Collect_Attack_data
 python3 Create_MLP_Dataset.py
 python3 Run_MLP_Attack.py
 ```
+
+(Refer to Figure 8(c) in paper for our results)
 
 The collection of timing traces takes up a lot of time, specially for the multi-process attacks. Hence, we have provided training and test datasets for 1-Process, 4-Process and 8-Process attacks inside ``TCHES_Artifact/Attack_data``. We also provide the script ``Run_MLP_Attack.py`` to run the attack model inside the same directory.
 
