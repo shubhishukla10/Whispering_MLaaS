@@ -52,6 +52,12 @@ Inside ``utils`` directory we have provided prebuilt binaries for the cache and 
 cd TCHES_Artifact/utils
 make
 ```
+*Note: If you run into SIGSEGV error while running the artifact (can be caused due to flush cache script), check your current stack size and increase it accordingly using the following commands:*
+
+```
+ulimit -s
+ulimit -Ss 40960
+```
 
 ### Distinguish Class Label Pairs
 
