@@ -46,6 +46,13 @@ We have created a docker image which has all the dependencies and the source cod
 
 ## Usage
 
+### Utils
+Inside ``utils`` directory we have provided prebuilt binaries for the cache and pipeline flush code. These binaries can also be built running the following command from inside the ``utils`` directory:
+```
+cd TCHES_Artifact/utils
+make
+```
+
 ### Distinguish Class Label Pairs
 
 Counting number of class pairs distingushable for CIFAR-10 (out of 45) and CIFAR-100 (out of 4950) dataset.
